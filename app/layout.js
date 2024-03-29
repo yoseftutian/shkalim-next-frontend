@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/utils/components/navbar/navbar";
 import { Suspense } from "react";
 import { CircularProgress } from "@mui/material";
+import { LoadingProvider } from "@/utils/contexts/loadingContext";
 
 const assistant = Assistant({ subsets: ["hebrew", "latin"] });
 
@@ -16,9 +17,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={assistant.className}>
         <Navbar />
-        {children}
+        <LoadingProvider>{children}</LoadingProvider>
       </body>
-        
     </html>
   );
 }

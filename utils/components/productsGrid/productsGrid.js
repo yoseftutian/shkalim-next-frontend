@@ -7,6 +7,7 @@ import ToolsBar from "./toolsBar/toolsBar";
 import Link from "next/link";
 import { RemoveCircle } from "@mui/icons-material";
 import { sortProducts } from "@/utils/functions/functions";
+import Image from "next/image";
 
 export default function ProductsGrid({ products }) {
   const [search, setSearch] = useState("");
@@ -31,7 +32,8 @@ export default function ProductsGrid({ products }) {
 function GridItem({ item }) {
   return (
     <Link href={`/product/${item._id}`} className="grid-item">
-      <img src={item.img} />
+      <Image fill src={item.img} objectFit="contain" loading="lazy" />
+
       <div>
         <h2>{item.title}</h2>
         <p>{item.price}</p>
@@ -40,7 +42,6 @@ function GridItem({ item }) {
       <div className="remove">
         <RemoveCircle />
       </div>
-        
     </Link>
   );
 }

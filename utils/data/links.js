@@ -9,8 +9,8 @@ export const links = [
   },
 
   {
-    title: "Generators",
-    href: "/generators",
+    title: "Create Product",
+    href: "/create",
   },
   {
     title: "About",

@@ -1,19 +1,25 @@
+"use client";
 import Link from "next/link";
-import "./navbar.css";
 import { links } from "@/utils/data/links";
+import { usePathname } from "next/navigation";
+import "./navbar.css";
+import { nanoid } from "nanoid";
 
 export default function Navbar() {
   // const [openLogin, setOpenLogin] = useState(false);
   // const [openRegister, setOpenRegister] = useState(false);
   // const { token, setToken } = useLoginContext();
+  const pathname = usePathname();
   return (
     <nav className="container">
       <ul className="link-list">
-        {links
-          .filter((item) => !item.excluded)
-          .map((item) => (
-            <NavItem link={item} />
-          ))}
+        {links.map((link) => (
+          <NavItem
+            key={nanoid()}
+            link={link}
+            current={pathname === link.href}
+          />
+        ))}
       </ul>
       {/* {token ? (
         <button onClick={() => setToken(null)}>SignOut</button>
@@ -33,15 +39,10 @@ export default function Navbar() {
   );
 }
 
-function NavItem({ link }) {
+function NavItem({ link, current }) {
   return (
     <li className="list-item">
-      <Link
-        className={`link 
-        
-        `}
-        href={link.href}
-      >
+      <Link className={`link ${current && "current"}`} href={link.href}>
         {link.title}
       </Link>
     </li>

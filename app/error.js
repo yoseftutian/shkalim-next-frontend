@@ -15,7 +15,6 @@ export default function Error({ error, reset }) {
       >
         Try again
       </Button>
-         
     </div>
   );
 }

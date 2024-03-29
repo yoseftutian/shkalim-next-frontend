@@ -2,13 +2,15 @@ import axios from "axios";
 const SERVER_URL = "http://localhost:3001";
 export async function getAllSpeakers() {
   try {
-    const response = await axios.get(`${SERVER_URL}/products`, {
+    const response = await fetch(`${SERVER_URL}/products`, {
+      next: { revalidate: 10, tags: ["products"] },
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYxYjRiYzM0ZGU3MDFkZTQ1ZmI0NWIiLCJpYXQiOjE3MTA4NDg5Njh9.7LB90G1SGP6T4-q9lWU9Tz2Md2QHOzxFtNB10kUfNU0",
       },
     });
-    return response.data;
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw new Error(error.message);
   }
