@@ -1,0 +1,14 @@
+.container-one {
+  height: calc(100vh - var(--nav-height));
+  background-color: blue;
+}
+.header {
+  font-size: 40px;
+  width: 70%;
+}
+
+.my-img {
+  height: 300px;
+  width: 300px;
+  position: relative;
+}

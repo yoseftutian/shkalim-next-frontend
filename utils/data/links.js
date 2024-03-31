@@ -24,4 +24,8 @@ export const links = [
     title: "Articles",
     href: "/articles",
   },
+  {
+    title: "New file",
+    href: "/new",
+  },
 ];
