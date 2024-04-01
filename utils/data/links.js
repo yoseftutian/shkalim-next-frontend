@@ -7,7 +7,6 @@ export const links = [
     title: "Speakers",
     href: "/speakers",
   },
-
   {
     title: "Create Product",
     href: "/create",
@@ -23,9 +22,5 @@ export const links = [
   {
     title: "Articles",
     href: "/articles",
-  },
-  {
-    title: "New file",
-    href: "/new",
   },
 ];

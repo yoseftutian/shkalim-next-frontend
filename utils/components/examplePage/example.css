@@ -1,14 +1,52 @@
-.container-one {
+.example-container {
+  width: 100%;
   height: calc(100vh - var(--nav-height));
+  padding: 60px 0;
+}
+
+.blue-background {
   background-color: blue;
 }
-.header {
-  font-size: 40px;
+
+.example-title {
+  font-size: 64px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.example-image {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: auto;
+}
+
+.info-container {
   width: 70%;
 }
 
-.my-img {
-  height: 300px;
-  width: 300px;
+.second-section-image {
+  width: 200px;
+  height: 200px;
   position: relative;
+}
+
+.second-section-middle-container {
+  height: 300px;
+}
+
+.email {
+  font-size: 40px;
+}
+
+.second-section-bottom-container {
+  width: 70%;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.contact-item {
+  width: 35%;
+  height: 70px;
 }
