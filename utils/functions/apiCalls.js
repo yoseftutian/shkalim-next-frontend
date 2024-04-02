@@ -3,7 +3,6 @@ const SERVER_URL = "http://localhost:3001";
 export async function getAllSpeakers() {
   try {
     const response = await fetch(`${SERVER_URL}/products`, {
-      next: { revalidate: 10, tags: ["products"] },
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYxYjRiYzM0ZGU3MDFkZTQ1ZmI0NWIiLCJpYXQiOjE3MTA4NDg5Njh9.7LB90G1SGP6T4-q9lWU9Tz2Md2QHOzxFtNB10kUfNU0",
@@ -56,5 +55,34 @@ export async function getNews() {
     return response.data;
   } catch (error) {
     throw new Error(error);
+  }
+}
+
+export async function deleteProduct(_id) {
+  try {
+    const response = await axios.delete(`${SERVER_URL}/products/${_id}`, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYxYjRiYzM0ZGU3MDFkZTQ1ZmI0NWIiLCJpYXQiOjE3MTA4NDg5Njh9.7LB90G1SGP6T4-q9lWU9Tz2Md2QHOzxFtNB10kUfNU0",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export async function getProductById(_id) {
+  try {
+    const response = await fetch(`${SERVER_URL}/products/${_id}`, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYxYjRiYzM0ZGU3MDFkZTQ1ZmI0NWIiLCJpYXQiOjE3MTA4NDg5Njh9.7LB90G1SGP6T4-q9lWU9Tz2Md2QHOzxFtNB10kUfNU0",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
   }
 }
