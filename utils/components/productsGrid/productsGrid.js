@@ -31,7 +31,7 @@ export default function ProductsGrid({ products }) {
 
 function GridItem({ item }) {
   return (
-    <Link href={`/product/${item._id}`} className="grid-item">
+    <Link href={`/speakers/${item._id}`} className="grid-item">
       <Image fill src={item.img} objectFit="contain" loading="lazy" />
 
       <div>

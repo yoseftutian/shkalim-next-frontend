@@ -1,10 +1,7 @@
 import { Assistant } from "next/font/google";
-import "./globals.css";
 import Navbar from "@/utils/components/navbar/navbar";
-import { Suspense } from "react";
-import { CircularProgress } from "@mui/material";
 import { LoadingProvider } from "@/utils/contexts/loadingContext";
-
+import "./globals.css";
 const assistant = Assistant({ subsets: ["hebrew", "latin"] });
 
 export const metadata = {
