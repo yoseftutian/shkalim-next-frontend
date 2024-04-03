@@ -11,7 +11,6 @@ export default async function Speaker({ params: { _id } }) {
           height={300}
           style={{ objectFit: "contain" }}
           src={product.mainImg}
-          alt={product.title}
         />
       </div>
       <div className="column">
