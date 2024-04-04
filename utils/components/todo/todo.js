@@ -1,6 +1,6 @@
 "use client";
-import { Add, CheckBox, Delete } from "@mui/icons-material";
-import { Checkbox, IconButton, TextField } from "@mui/material";
+import { Add, Delete } from "@mui/icons-material";
+import { IconButton, TextField } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useRef, useState } from "react";
 

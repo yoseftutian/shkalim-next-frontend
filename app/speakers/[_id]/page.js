@@ -1,8 +1,11 @@
 import { getProductById } from "@/utils/functions/apiCalls";
+import { getCookie } from "cookies-next";
+import { cookies } from "next/headers";
 import Image from "next/image";
 
 export default async function Speaker({ params: { _id } }) {
-  const product = await getProductById(_id);
+  const token = getCookie("token", { cookies });
+  const product = await getProductById(_id, token);
   return (
     <div className="row">
       <div>

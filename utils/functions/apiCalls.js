@@ -2,7 +2,6 @@ import axios from "axios";
 const SERVER_URL = "http://localhost:3001";
 export async function getAllSpeakers(token) {
   try {
-    // console.log(getCookie("token", { req, res }));
     const response = await fetch(`${SERVER_URL}/products`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -19,8 +18,7 @@ export async function createNewProduct(body, token) {
   try {
     const response = await axios.post(`${SERVER_URL}/products`, body, {
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYxYjRiYzM0ZGU3MDFkZTQ1ZmI0NWIiLCJpYXQiOjE3MTA4NDg5Njh9.7LB90G1SGP6T4-q9lWU9Tz2Md2QHOzxFtNB10kUfNU0",
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
@@ -71,12 +69,11 @@ export async function deleteProduct(_id, token) {
   }
 }
 
-export async function getProductById(_id) {
+export async function getProductById(_id, token) {
   try {
     const response = await fetch(`${SERVER_URL}/products/${_id}`, {
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYxYjRiYzM0ZGU3MDFkZTQ1ZmI0NWIiLCJpYXQiOjE3MTA4NDg5Njh9.7LB90G1SGP6T4-q9lWU9Tz2Md2QHOzxFtNB10kUfNU0",
+        Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
