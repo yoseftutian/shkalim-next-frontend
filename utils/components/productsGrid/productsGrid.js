@@ -62,7 +62,12 @@ export default function ProductsGrid({ products }) {
 function GridItem({ item, setSelectedProduct }) {
   return (
     <Link href={`/speakers/${item._id}`} className="grid-item">
-      <Image fill src={item.mainImg} objectFit="contain" loading="lazy" />
+      <Image
+        fill
+        src={item.mainImg}
+        style={{ objectFit: "contain" }}
+        loading="lazy"
+      />
       <div>
         <h2>{item.title}</h2>
         <p>{item.price}</p>
