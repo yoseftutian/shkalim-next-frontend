@@ -1,5 +1,8 @@
 import axios from "axios";
-const SERVER_URL = "http://localhost:3001";
+const SERVER_URL =
+  process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+    ? "http://localhost:3001"
+    : "https://shkalim-rishoni-backend-8s23.onrender.com";
 export async function getAllSpeakers(token) {
   try {
     const response = await fetch(`${SERVER_URL}/products`, {
