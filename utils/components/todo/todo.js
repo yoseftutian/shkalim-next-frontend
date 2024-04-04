@@ -1,22 +1,24 @@
 "use client";
+import {
+  createTodo,
+  deleteTodoById,
+  updateTodoById,
+} from "@/utils/functions/apiCalls";
 import { Add, Delete } from "@mui/icons-material";
 import { IconButton, TextField } from "@mui/material";
-import { nanoid } from "nanoid";
+import { getCookie } from "cookies-next";
 import { useRef, useState } from "react";
 
-export default function Todo() {
-  const [todos, setTodos] = useState([]);
+export default function Todo({ info }) {
+  const [todos, setTodos] = useState(info);
   const titleRef = useRef(null);
-  function addTodo() {
-    setTodos((prev) => [
-      ...prev,
-      {
-        id: nanoid(),
-        title: titleRef.current.value,
-        finished: false,
-        date: new Date(),
-      },
-    ]);
+  async function addTodo() {
+    const todo = await createTodo(
+      "65f1b4bc34de701de45fb45b",
+      { title: titleRef.current.value },
+      getCookie("token")
+    );
+    setTodos((prev) => [...prev, todo]);
     titleRef.current.value = "";
   }
   return (
@@ -29,7 +31,7 @@ export default function Todo() {
       </div>
       <table style={{ width: "400px" }}>
         {todos.map((todo) => (
-          <TodoItem key={nanoid()} todo={todo} setTodos={setTodos} />
+          <TodoItem key={todo._id} todo={todo} setTodos={setTodos} />
         ))}
       </table>
     </div>
@@ -51,10 +53,11 @@ function TodoItem({ todo, setTodos }) {
         <input
           type="checkbox"
           checked={todo.finished}
-          onChange={() => {
+          onChange={async () => {
+            await updateTodoById(todo._id, getCookie("token"));
             setTodos((prev) =>
               prev.map((p) => {
-                if (p.id === todo.id) return { ...p, finished: !p.finished };
+                if (p._id === todo._id) return { ...p, finished: !p.finished };
                 return p;
               })
             );
@@ -63,9 +66,10 @@ function TodoItem({ todo, setTodos }) {
       </td>
       <td>
         <IconButton
-          onClick={() =>
-            setTodos((prev) => prev.filter((p) => p.id !== todo.id))
-          }
+          onClick={async () => {
+            await deleteTodoById(todo._id, getCookie("token"));
+            setTodos((prev) => prev.filter((p) => p._id !== todo._id));
+          }}
         >
           <Delete />
         </IconButton>
