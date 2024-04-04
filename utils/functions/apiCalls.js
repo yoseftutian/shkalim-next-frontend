@@ -82,3 +82,52 @@ export async function getProductById(_id, token) {
     throw new Error(error.message);
   }
 }
+
+export async function createTodo(_id, body, token) {
+  try {
+    const response = await axios.post(`${SERVER_URL}/todos/${_id}`, body, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getAlUserTodos(_id, token) {
+  try {
+    const response = await fetch(`${SERVER_URL}/todos/${_id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function updateTodoById(_id, token) {
+  try {
+    const response = await axios.patch(
+      `${SERVER_URL}/todos/${_id}`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function deleteTodoById(_id, token) {
+  try {
+    const response = await axios.delete(`${SERVER_URL}/todos/${_id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
