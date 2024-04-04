@@ -1,7 +1,10 @@
 import { Assistant } from "next/font/google";
 import Navbar from "@/utils/components/navbar/navbar";
 import { LoadingProvider } from "@/utils/contexts/loadingContext";
+import { getCookie } from "cookies-next";
+import { cookies } from "next/headers";
 import "./globals.css";
+
 const assistant = Assistant({ subsets: ["hebrew", "latin"] });
 
 export const metadata = {
@@ -10,10 +13,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const token = getCookie("token", { cookies });
   return (
     <html lang="en">
       <body className={assistant.className}>
-        <Navbar />
+        {token && <Navbar />}
         <LoadingProvider>{children}</LoadingProvider>
       </body>
     </html>
