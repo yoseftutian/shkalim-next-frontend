@@ -6,6 +6,7 @@ const SERVER_URL =
 export async function getAllSpeakers(token) {
   try {
     const response = await fetch(`${SERVER_URL}/products`, {
+      cache: "no-cache",
       headers: {
         Authorization: `Bearer ${token}`,
       },

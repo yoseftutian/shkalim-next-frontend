@@ -4,6 +4,8 @@ import { TextField } from "@mui/material";
 import SubmitBtn from "../submitBtn/submitBtn";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebase";
+import { getCookies } from "cookies-next";
+import { cookies } from "next/headers";
 
 export default function AddProductForm() {
   const createProduct = async (formData) => {
@@ -24,7 +26,7 @@ export default function AddProductForm() {
       const body = Object.fromEntries(formData);
       body["mainImg"] = images[0];
       body["images"] = images;
-      await createNewProduct(body);
+      await createNewProduct(body, getCookies("token", { cookies }));
     } catch (error) {
       console.error(error);
     }
