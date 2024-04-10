@@ -14,7 +14,7 @@ export default function Todo({ info }) {
   const titleRef = useRef(null);
   async function addTodo() {
     const todo = await createTodo(
-      "65f1b4bc34de701de45fb45b",
+      getCookie("user_id"),
       { title: titleRef.current.value },
       getCookie("token")
     );
@@ -67,7 +67,11 @@ function TodoItem({ todo, setTodos }) {
       <td>
         <IconButton
           onClick={async () => {
-            await deleteTodoById(todo._id, getCookie("token"));
+            await deleteTodoById(
+              todo._id,
+              getCookie("user_id"),
+              getCookie("token")
+            );
             setTodos((prev) => prev.filter((p) => p._id !== todo._id));
           }}
         >

@@ -6,7 +6,8 @@ import { getAlUserTodos } from "@/utils/functions/apiCalls";
 
 export default async function Home() {
   const token = getCookie("token", { cookies });
-  const todos = await getAlUserTodos("65f1b4bc34de701de45fb45b", token);
+  const user_id = getCookie("user_id", { cookies });
+  const todos = await getAlUserTodos(user_id, token);
   return (
     <div className="main">
       <Todo info={todos} />{" "}
