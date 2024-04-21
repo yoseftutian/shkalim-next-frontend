@@ -1,0 +1,29 @@
+/* Todo.css */
+.column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+}
+
+.row {
+  display: flex;
+  width: 400px;
+  gap: 20px;
+}
+
+.todo-table {
+  width: 400px;
+}
+
+.todo-item {
+  width: 100%;
+}
+
+.todo-title {
+  font-size: 1.5rem; /* Adjust the size as needed */
+}
+
+.todo-date {
+  font-size: 1rem; /* Adjust the size as needed */
+}
