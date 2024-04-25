@@ -1,0 +1,13 @@
+
+.add-todo {
+  height: 85vh;
+}
+
+.todo-input {
+  width: 400px;
+  gap: 20px;
+}
+
+.todo-table {
+  width: 400px;
+}
