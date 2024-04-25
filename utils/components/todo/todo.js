@@ -8,6 +8,7 @@ import { Add, Delete } from "@mui/icons-material";
 import { IconButton, TextField } from "@mui/material";
 import { getCookie } from "cookies-next";
 import { useRef, useState } from "react";
+import "./todo.css";
 
 export default function Todo({ info }) {
   const [todos, setTodos] = useState(info);
@@ -22,14 +23,14 @@ export default function Todo({ info }) {
     titleRef.current.value = "";
   }
   return (
-    <div className="column center" style={{ height: "85vh" }}>
-      <div className="row" style={{ width: "400px", gap: "20px" }}>
+    <div className="add-todo column center">
+      <div className="todo-input row">
         <TextField inputRef={titleRef} />
         <IconButton onClick={addTodo}>
           <Add />
         </IconButton>
       </div>
-      <table style={{ width: "400px" }}>
+      <table className="todo-table">
         {todos.map((todo) => (
           <TodoItem key={todo._id} todo={todo} setTodos={setTodos} />
         ))}
